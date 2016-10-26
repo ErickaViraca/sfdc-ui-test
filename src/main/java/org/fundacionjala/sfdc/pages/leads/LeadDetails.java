@@ -88,7 +88,7 @@ public class LeadDetails extends DetailBase {
     private WebElement addressLabel;
 
     /*additional information*/
-    @FindBy(xpath = "//td[contains(.,'Product Interest')]/following::div")
+    @FindBy(xpath = "//td[contains(.,'ProductFields Interest')]/following::div")
     @CacheLookup
     private WebElement productInterestLabel;
 

@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite1" verbose="1">
+    <listeners>
+        <listener class-name="org.fundacionjala.sfdc.framework.testng.SuiteListener"/>
+    </listeners>
+    <test name="Regression1">
+        <classes>
+            <class name="org.fundacionjala.sfdc.tests.contact.DeleteEditContact"/>
+            <class name="org.fundacionjala.sfdc.tests.contact.CreateContact"/>
+        </classes>
+    </test>
+</suite>

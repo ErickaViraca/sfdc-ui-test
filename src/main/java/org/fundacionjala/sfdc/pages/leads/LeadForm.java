@@ -106,7 +106,7 @@ public class LeadForm extends FormBase {
     @CacheLookup
     private WebElement countryTextField;
 
-    @FindBy(xpath = "//td[contains(.,'Product Interest')]/following::span/select")
+    @FindBy(xpath = "//td[contains(.,'ProductFields Interest')]/following::span/select")
     @CacheLookup
     private WebElement productInterestSelect;
 

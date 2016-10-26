@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.testng.Assert;
 
-import org.fundacionjala.sfdc.pages.products.Product;
 import org.fundacionjala.sfdc.pages.products.ProductDetail;
 
 /**

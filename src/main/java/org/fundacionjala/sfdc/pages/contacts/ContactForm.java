@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.fundacionjala.sfdc.framework.utils.CommonActions;
 import org.fundacionjala.sfdc.pages.FormSteps;
-import org.fundacionjala.sfdc.pages.base.AbstractBasePage;
+import org.fundacionjala.sfdc.pages.base.FormBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +13,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * This class represent Contact Form.
  */
-public class ContactForm extends AbstractBasePage {
+public class ContactForm extends FormBase {
 
     @FindBy(id = "name_salutationcon2")
     @CacheLookup
@@ -54,15 +54,6 @@ public class ContactForm extends AbstractBasePage {
     @FindBy(id = "con10")
     @CacheLookup
     private WebElement phoneField;
-
-    @FindBy(xpath = "//input[@tabindex='31']")
-
-    @CacheLookup
-    private WebElement saveBtn;
-
-    @FindBy(xpath = "//input[@tabindex='32']")
-    @CacheLookup
-    private WebElement saveNewBtn;
 
     @FindBy(xpath = "//input[@tabindex='33']")
     @CacheLookup
@@ -157,12 +148,24 @@ public class ContactForm extends AbstractBasePage {
     }
 
     /**
-     * This method makes click save button.
+     * This method makes click in save new button.
      *
      * @return {@link ContactsDetail}.
      */
+    @Override
     public ContactsDetail clickSaveButton() {
-        CommonActions.clickElement(saveBtn);
+        CommonActions.clickElement(saveButton);
+        return new ContactsDetail();
+    }
+
+    /**
+     * This method makes click in save button.
+     *
+     * @return {@link ContactsDetail}.
+     */
+    @Override
+    public ContactsDetail clickSaveNewButton() {
+        CommonActions.clickElement(saveNewBtn);
         return new ContactsDetail();
     }
 
@@ -172,8 +175,8 @@ public class ContactForm extends AbstractBasePage {
      * @param values a map to set of the strategy
      * @return a Map with the values of the opportunity create.
      */
-    public Map<String, FormSteps> getStrategyStepMap(final Map<String, String> values) {
-        final Map<String, FormSteps> strategyMap = new HashMap();
+    private Map<String, FormSteps> getStrategyStepMap(final Map<String, String> values) {
+        final Map<String, FormSteps> strategyMap = new HashMap<>();
 
         strategyMap.put("firstNameCategory", () -> selectFirstNameCategory(String.valueOf(values.get("firstNameCategory"))));
         strategyMap.put("contactName", () -> setContactNameField(String.valueOf(values.get("contactName"))));

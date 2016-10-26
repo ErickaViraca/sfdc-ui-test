@@ -9,12 +9,11 @@ import org.testng.annotations.Test;
 import org.fundacionjala.sfdc.framework.utils.JsonMapper;
 import org.fundacionjala.sfdc.pages.MainApp;
 import org.fundacionjala.sfdc.pages.TabBar;
-import org.fundacionjala.sfdc.pages.products.Product;
 import org.fundacionjala.sfdc.pages.products.ProductDetail;
 import org.fundacionjala.sfdc.pages.products.ProductForm;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
 
-import static org.fundacionjala.sfdc.pages.products.Product.*;
+import static org.fundacionjala.sfdc.pages.products.ProductFields.*;
 import static org.testng.Assert.assertFalse;
 
 /**

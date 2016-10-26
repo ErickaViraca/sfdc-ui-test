@@ -13,7 +13,7 @@ import org.fundacionjala.sfdc.framework.utils.CommonActions;
 import org.fundacionjala.sfdc.pages.AssertsDetails;
 import org.fundacionjala.sfdc.pages.base.DetailBase;
 
-import static org.fundacionjala.sfdc.pages.products.Product.*;
+import static org.fundacionjala.sfdc.pages.products.ProductFields.*;
 
 /**
  * This class handle the product details.

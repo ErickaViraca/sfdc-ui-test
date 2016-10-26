@@ -99,7 +99,7 @@ public class ContactsDetail extends AbstractBasePage {
      * @return a name label.
      */
     public MainApp deleteContact() {
-        deleteButton.click();
+        CommonActions.clickElement(deleteButton);
         Alert javascriptAlert = driver.switchTo().alert();
         javascriptAlert.accept();
         return new MainApp();
@@ -151,7 +151,8 @@ public class ContactsDetail extends AbstractBasePage {
      * @return a Map with the values of contact edit.
      */
     public Map<String, AssertsDetails> getStrategyAssertMap() {
-        final Map<String, AssertsDetails> strategyMap = new HashMap();
+        final Map<String, AssertsDetails> strategyMap = new HashMap<>();
+
 
         strategyMap.put("contactName", this::getNameLabel);
         strategyMap.put("firstNameCategory", this::getFirstNameCategoryLabel);

@@ -37,8 +37,12 @@ public class MainApp extends AbstractBasePage {
         return new UserInformationPage();
     }
 
-
     public void closeMainApp() {
         driver.quit();
     }
+
+    public String getUrl() {
+        return driver.getCurrentUrl();
+    }
+
 }

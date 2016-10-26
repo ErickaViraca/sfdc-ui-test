@@ -2,7 +2,6 @@ package org.fundacionjala.sfdc.pages.products;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.StringJoiner;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -16,7 +15,7 @@ import org.fundacionjala.sfdc.pages.FormSteps;
 import org.fundacionjala.sfdc.pages.base.AbstractBasePage;
 import org.fundacionjala.sfdc.pages.base.FormBase;
 
-import static org.fundacionjala.sfdc.pages.products.Product.*;
+import static org.fundacionjala.sfdc.pages.products.ProductFields.*;
 
 /**
  * This class handle the product form.
@@ -62,7 +61,7 @@ public class ProductForm extends FormBase {
     }
 
     /**
-     * This method save a new product on "Product" form.
+     * This method save a new product on "ProductFields" form.
      *
      * @return {@link ProductDetail}
      */
