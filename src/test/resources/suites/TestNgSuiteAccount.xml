@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite1" verbose="1">
+    <listeners>
+        <listener class-name="org.fundacionjala.sfdc.framework.testng.SuiteListener"/>
+    </listeners>
+    <test name="Account">
+        <classes>
+            <class name="org.fundacionjala.sfdc.tests.account.CreateAccount"/>
+            <class name="org.fundacionjala.sfdc.tests.account.DeleteAccount"/>
+            <class name="org.fundacionjala.sfdc.tests.account.EditAccount"/>
+        </classes>
+    </test>
+</suite>

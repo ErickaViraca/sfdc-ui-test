@@ -116,12 +116,11 @@ public class ContractForm extends FormBase {
     /**
      * This method obtains values the Map set.
      *
-     * @return A map with values set on "contract" form.
+     * @return A map with values set on "product" form.
      */
     public Map<String, String> getValuesMap() {
         return valuesMap;
     }
-
     /**
      * This method sets a customer signed by.
      *
@@ -353,6 +352,7 @@ public class ContractForm extends FormBase {
 
     /**
      * {@inheritDoc}
+     * @return {@link ContractDetail}
      */
     @Override
     public ContractDetail clickSaveButton() {
@@ -362,6 +362,7 @@ public class ContractForm extends FormBase {
 
     /**
      * {@inheritDoc}
+     * @return {@link ContractDetail}
      */
     @Override
     public AbstractBasePage clickSaveNewButton() {
