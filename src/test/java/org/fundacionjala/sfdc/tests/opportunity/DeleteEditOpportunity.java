@@ -2,21 +2,22 @@ package org.fundacionjala.sfdc.tests.opportunity;
 
 import java.util.Map;
 
-import org.fundacionjala.sfdc.pages.MainApp;
-import org.fundacionjala.sfdc.pages.TabBar;
-import org.fundacionjala.sfdc.pages.accounts.AccountAbstractPage;
-import org.fundacionjala.sfdc.pages.accounts.AccountProfile;
-import org.fundacionjala.sfdc.pages.accounts.NewAccountPage;
-import org.fundacionjala.sfdc.pages.opportunities.OpportunityDetail;
-import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
-import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
-
-import org.fundacionjala.sfdc.framework.utils.JsonMapper;
-
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import org.fundacionjala.sfdc.framework.utils.JsonMapper;
+import org.fundacionjala.sfdc.pages.MainApp;
+import org.fundacionjala.sfdc.pages.TabBar;
+
+import org.fundacionjala.sfdc.pages.accounts.AccountDetail;
+import org.fundacionjala.sfdc.pages.accounts.AccountForm;
+import org.fundacionjala.sfdc.pages.accounts.AccountHome;
+
+import org.fundacionjala.sfdc.pages.opportunities.OpportunityDetail;
+import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
+import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
 
 import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.ACCOUNT_NAME;
 import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.OPPORTUNITY_NAME;
@@ -30,8 +31,8 @@ public class DeleteEditOpportunity {
     private TabBar tabBar;
     private OpportunityForm opportunityForm;
     private OpportunityDetail opportunityDetail;
-    private AccountAbstractPage accountsHome;
-    private AccountProfile accountProfile;
+    private AccountHome accountsHome;
+    private AccountDetail accountDetail;
     private MainApp mainApp;
     private Map<String, String> valuesMapJson;
 
@@ -46,10 +47,11 @@ public class DeleteEditOpportunity {
         tabBar = mainApp.goToTabBar();
 
         accountsHome = tabBar.clickOnAccountsHome();
-        NewAccountPage newAccountForm = accountsHome.clickNewButton();
-        accountProfile = newAccountForm
-                .setAccountName(valuesMapJson.get(ACCOUNT_NAME.value))
-                .pressSaveBtn();
+        AccountForm accountForm = accountsHome.clickNewButton();
+        accountDetail = accountForm
+                .setAccountName(valuesMapJson.get(ACCOUNT_NAME.getValue()))
+                .clickSaveButton();
+
         OpportunityHome opportunityHome = tabBar.clickOnOpportunitiesHome();
         opportunityForm = opportunityHome.clickNewButton();
 
@@ -63,7 +65,7 @@ public class DeleteEditOpportunity {
     @Test
     public void DeleteOpportunity() {
         opportunityDetail.clickDeleteButton();
-        Assert.assertFalse(opportunityDetail.isOpportunityDisplayed(valuesMapJson.get(OPPORTUNITY_NAME.value)));
+        Assert.assertFalse(opportunityDetail.isOpportunityDisplayed(valuesMapJson.get(OPPORTUNITY_NAME.getValue())));
     }
 
     /**
@@ -86,8 +88,9 @@ public class DeleteEditOpportunity {
     public void afterTest() {
         tabBar = mainApp.goToTabBar();
         accountsHome = tabBar.clickOnAccountsHome();
-        accountProfile = accountsHome.clickOnAccount(valuesMapJson.get(ACCOUNT_NAME.value));
-        mainApp = accountProfile.deleteAccount();
+        accountDetail = accountsHome.clickOnAccount(valuesMapJson.get(ACCOUNT_NAME.getValue()));
+        mainApp = accountDetail.clickDeleteButton();
+
     }
 
 }

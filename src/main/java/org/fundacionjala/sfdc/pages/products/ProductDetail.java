@@ -13,7 +13,11 @@ import org.fundacionjala.sfdc.framework.utils.CommonActions;
 import org.fundacionjala.sfdc.pages.AssertsDetails;
 import org.fundacionjala.sfdc.pages.base.DetailBase;
 
-import static org.fundacionjala.sfdc.pages.products.ProductFields.*;
+import static org.fundacionjala.sfdc.pages.products.ProductFields.NAME;
+import static org.fundacionjala.sfdc.pages.products.ProductFields.ACTIVE;
+import static org.fundacionjala.sfdc.pages.products.ProductFields.CODE;
+import static org.fundacionjala.sfdc.pages.products.ProductFields.FAMILY;
+import static org.fundacionjala.sfdc.pages.products.ProductFields.DESCRIPTION;
 
 /**
  * This class handle the product details.
@@ -70,9 +74,9 @@ public class ProductDetail extends DetailBase {
     }
 
     /**
-     * Method that to permit gets texts.
+     * Method that permit gets texts.
      *
-     * @return a Map with the values of opportunity edit.
+     * @return a Map with the values of product edit.
      */
     public Map<String, AssertsDetails> getStrategyAssertMap() {
         final Map<String, AssertsDetails> strategyMap = new HashMap<>();
@@ -88,7 +92,7 @@ public class ProductDetail extends DetailBase {
      * This method verify that product is displayed.
      *
      * @param product String with product.
-     * @return returns <code>true<code/> if product is displayed.
+     * @return returns <product>true<product/> if product is displayed.
      */
     public boolean isProductDisplayed(final String product) {
         return CommonActions.existElementByLinkText(product);

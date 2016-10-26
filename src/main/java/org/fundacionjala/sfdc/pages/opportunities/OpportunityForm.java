@@ -3,20 +3,31 @@ package org.fundacionjala.sfdc.pages.opportunities;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.fundacionjala.sfdc.framework.utils.CommonActions;
-import org.fundacionjala.sfdc.pages.FormSteps;
-import org.fundacionjala.sfdc.pages.base.FormBase;
-import org.fundacionjala.sfdc.pages.lookup.LookUpWindow;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.*;
+import org.fundacionjala.sfdc.framework.utils.CommonActions;
+import org.fundacionjala.sfdc.pages.FormSteps;
+import org.fundacionjala.sfdc.pages.base.FormBase;
+import org.fundacionjala.sfdc.pages.lookup.LookUpWindow;
+
+import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.ACCOUNT_NAME;
+import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.AMOUNT;
+import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.CURRENT_CLOSE_DATE;
+import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.DELIVERY_INSTALL_STATUS;
+import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.LEAD_SOURCE;
+import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.NEXT_STEP;
+import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.OPPORTUNITY_NAME;
+import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.ORDER_NUMBER;
+import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.PRIVATE_FLAG;
+import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.STAGE;
+import static org.fundacionjala.sfdc.pages.opportunities.OpportunityFields.TYPE;
 
 
 /**
- * This class represent to a form to create or edit a opportunity
+ * This class represent to a form to create or edit a opportunity.
  */
 public class OpportunityForm extends FormBase {
 
@@ -90,17 +101,24 @@ public class OpportunityForm extends FormBase {
     private OpportunityBuilder opportunityBuilder;
     private Map<String, String> valuesMap;
 
+    /**
+     * Constructor that call the parent constructor.
+     */
     public OpportunityForm() {
         super();
     }
 
-    private OpportunityForm(OpportunityBuilder opportunityBuilder) {
+    /**
+     * Constructor that initialize the values.
+     * @param opportunityBuilder the builder class.
+     */
+    private OpportunityForm(final OpportunityBuilder opportunityBuilder) {
         valuesMap = new HashMap<>();
         this.opportunityBuilder = opportunityBuilder;
     }
 
     /**
-     * {@link FormBase}
+     * {@inheritDoc}.
      */
     @Override
     public OpportunityDetail clickSaveButton() {
@@ -109,7 +127,7 @@ public class OpportunityForm extends FormBase {
     }
 
     /**
-     * {@link FormBase}
+     * {@inheritDoc}.
      */
     @Override
     public OpportunityDetail clickSaveNewButton() {
@@ -189,7 +207,7 @@ public class OpportunityForm extends FormBase {
     }
 
     /**
-     * This method  sets a close date
+     * This method  sets a close date.
      *
      * @param closeDate a string to set.
      * @return {@link OpportunityForm}.
@@ -235,7 +253,7 @@ public class OpportunityForm extends FormBase {
     }
 
     /**
-     * This method sets a probability to opportunity/
+     * This method sets a probability to opportunity.
      *
      * @param probability a string to set.
      * @return {@link OpportunityForm}.
@@ -273,7 +291,7 @@ public class OpportunityForm extends FormBase {
      * This method chooses install status.
      *
      * @param deleveryInstallationStatus a string to choose.
-     * @return {@link OpportunityForm}
+     * @return {@link OpportunityForm}.
      */
     public OpportunityForm chooseDeliveryInstallationStatusDdl(final String deleveryInstallationStatus) {
         Select selectBox = new Select(multiSelectDeliveryInstallationStatus);
@@ -282,10 +300,10 @@ public class OpportunityForm extends FormBase {
     }
 
     /**
-     * This method sets a description
+     * This method sets a description.
      *
      * @param description a string to sets.
-     * @return {@link OpportunityForm}
+     * @return {@link OpportunityForm}.
      */
     public OpportunityForm setDescription(final String description) {
         CommonActions.sendKeys(descriptionTextArea, description);
@@ -314,6 +332,8 @@ public class OpportunityForm extends FormBase {
 
     /**
      * This method loads data to fill the form for a given Json file.
+     *
+     * @param valuesMapCreate Map with the Json or builder map values.
      */
     public void fillTheForm(final Map<String, String> valuesMapCreate) {
         valuesMapCreate.keySet()
@@ -329,18 +349,19 @@ public class OpportunityForm extends FormBase {
     private Map<String, FormSteps> getStrategyStepMap(final Map<String, String> values) {
         final Map<String, FormSteps> strategyMap = new HashMap<>();
 
-        strategyMap.put(OPPORTUNITY_NAME.value, () -> setOpportunityName(values.get(OPPORTUNITY_NAME.value)));
-        strategyMap.put(TYPE.value, () -> chooseTypeDdl(values.get(TYPE.value)));
-        strategyMap.put(LEAD_SOURCE.value, () -> chooseLeadSourceDdl(values.get(LEAD_SOURCE.value)));
-        strategyMap.put(AMOUNT.value, () -> setAmount(values.get(AMOUNT.value)));
-        strategyMap.put(NEXT_STEP.value, () -> setNextStep(values.get(NEXT_STEP.value)));
-        strategyMap.put(STAGE.value, () -> chooseStageDdl(values.get(STAGE.value)));
-        strategyMap.put(ORDER_NUMBER.value, () -> setOrderNumber(values.get(ORDER_NUMBER.value)));
-        strategyMap.put(DELIVERY_INSTALL_STATUS.value,
-                () -> chooseDeliveryInstallationStatusDdl(values.get(DELIVERY_INSTALL_STATUS.value)));
-        strategyMap.put(ACCOUNT_NAME.value, () -> setAccountName(values.get(ACCOUNT_NAME.value)));
-        strategyMap.put(CURRENT_CLOSE_DATE.value, () -> setCloseDate(values.get(CURRENT_CLOSE_DATE.value)));
-        strategyMap.put(PRIVATE_FLAG.value, () -> checkPrivateFlag(Boolean.parseBoolean(values.get(PRIVATE_FLAG.value))));
+        strategyMap.put(OPPORTUNITY_NAME.getValue(), () -> setOpportunityName(values.get(OPPORTUNITY_NAME.getValue())));
+        strategyMap.put(TYPE.getValue(), () -> chooseTypeDdl(values.get(TYPE.getValue())));
+        strategyMap.put(LEAD_SOURCE.getValue(), () -> chooseLeadSourceDdl(values.get(LEAD_SOURCE.getValue())));
+        strategyMap.put(AMOUNT.getValue(), () -> setAmount(values.get(AMOUNT.getValue())));
+        strategyMap.put(NEXT_STEP.getValue(), () -> setNextStep(values.get(NEXT_STEP.getValue())));
+        strategyMap.put(STAGE.getValue(), () -> chooseStageDdl(values.get(STAGE.getValue())));
+        strategyMap.put(ORDER_NUMBER.getValue(), () -> setOrderNumber(values.get(ORDER_NUMBER.getValue())));
+        strategyMap.put(DELIVERY_INSTALL_STATUS.getValue(),
+                () -> chooseDeliveryInstallationStatusDdl(values.get(DELIVERY_INSTALL_STATUS.getValue())));
+        strategyMap.put(ACCOUNT_NAME.getValue(), () -> setAccountName(values.get(ACCOUNT_NAME.getValue())));
+        strategyMap.put(CURRENT_CLOSE_DATE.getValue(), () -> setCloseDate(values.get(CURRENT_CLOSE_DATE.getValue())));
+        strategyMap.put(PRIVATE_FLAG.getValue(),
+                () -> checkPrivateFlag(Boolean.parseBoolean(values.get(PRIVATE_FLAG.getValue()))));
 
         return strategyMap;
     }
@@ -365,7 +386,11 @@ public class OpportunityForm extends FormBase {
         return valuesMap;
     }
 
+    /**
+     * Inner class that manage the values to be built.
+     */
     public static class OpportunityBuilder {
+
         private String accountName;
         private String type;
         private String amount;
@@ -394,9 +419,9 @@ public class OpportunityForm extends FormBase {
         public OpportunityBuilder(final String opportunityName, final String currentCloseDate,
                                   final String stage) {
             strategyMap = new HashMap<>();
-            strategyMap.put(OPPORTUNITY_NAME.value, opportunityName);
-            strategyMap.put(CURRENT_CLOSE_DATE.value, currentCloseDate);
-            strategyMap.put(STAGE.value, stage);
+            strategyMap.put(OPPORTUNITY_NAME.getValue(), opportunityName);
+            strategyMap.put(CURRENT_CLOSE_DATE.getValue(), currentCloseDate);
+            strategyMap.put(STAGE.getValue(), stage);
             this.opportunityName = opportunityName;
             this.closeDate = currentCloseDate;
             this.stage = stage;
@@ -410,7 +435,7 @@ public class OpportunityForm extends FormBase {
          */
         public OpportunityBuilder setAccountName(final String accountName) {
             this.accountName = accountName;
-            strategyMap.put(ACCOUNT_NAME.value, accountName);
+            strategyMap.put(ACCOUNT_NAME.getValue(), accountName);
             return this;
         }
 
@@ -422,7 +447,7 @@ public class OpportunityForm extends FormBase {
          */
         public OpportunityBuilder setType(final String type) {
             this.type = type;
-            strategyMap.put(TYPE.value, type);
+            strategyMap.put(TYPE.getValue(), type);
             return this;
         }
 
@@ -434,7 +459,7 @@ public class OpportunityForm extends FormBase {
          */
         public OpportunityBuilder setAmount(final String amount) {
             this.amount = amount;
-            strategyMap.put(AMOUNT.value, amount);
+            strategyMap.put(AMOUNT.getValue(), amount);
             return this;
         }
 

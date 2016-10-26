@@ -16,7 +16,7 @@ public enum OpportunityFields {
     PRIVATE_FLAG("privateFlag"),
     OPPORTUNITY_NAME("opportunityName");
 
-    public final String value;
+    private final String value;
 
     /**
      * This construct sets a string to the enums.
@@ -27,4 +27,12 @@ public enum OpportunityFields {
         this.value = value;
     }
 
+    /**
+     * Method that return the value.
+     *
+     * @return the corresponding value.
+     */
+    public String getValue() {
+        return value;
+    }
 }
