@@ -13,21 +13,9 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ContractHome extends HomeBase {
 
-    @FindBy(name = "new")
-    @CacheLookup
-    WebElement newButton;
 
-    @FindBy(css = "span.fFooter a:first-child")
-    @CacheLookup
-    WebElement editViewLink;
-
-    @FindBy(css = "span.fFooter a:last-child")
-    @CacheLookup
-    WebElement createNewViewLink;
     /**
-     * This method makes click in new button in contract page.
-     *
-     * @return a contract form page object.
+     * {@inheritDoc}
      */
     @Override
     public ContractForm clickNewButton() {
