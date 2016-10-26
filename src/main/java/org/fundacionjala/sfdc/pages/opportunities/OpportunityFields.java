@@ -11,7 +11,7 @@ public enum OpportunityFields {
     STAGE("stage"),
     ORDER_NUMBER("orderNumber"),
     DELIVERY_INSTALL_STATUS("deliveryInstallStatus"),
-    ACCOUNT_NAME("accountName"),
+    ACCOUNT_NAME("ACCOUNT_NAME"),
     CURRENT_CLOSE_DATE("currentCloseDate"),
     PRIVATE_FLAG("privateFlag"),
     OPPORTUNITY_NAME("opportunityName");

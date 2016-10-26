@@ -10,9 +10,11 @@ import org.testng.annotations.Test;
 import org.fundacionjala.sfdc.framework.utils.JsonMapper;
 import org.fundacionjala.sfdc.pages.MainApp;
 import org.fundacionjala.sfdc.pages.TabBar;
+
 import org.fundacionjala.sfdc.pages.accounts.AccountDetail;
 import org.fundacionjala.sfdc.pages.accounts.AccountForm;
 import org.fundacionjala.sfdc.pages.accounts.AccountHome;
+
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityDetail;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
@@ -30,7 +32,7 @@ public class DeleteEditOpportunity {
     private OpportunityForm opportunityForm;
     private OpportunityDetail opportunityDetail;
     private AccountHome accountsHome;
-    private AccountDetail accountProfile;
+    private AccountDetail accountDetail;
     private MainApp mainApp;
     private Map<String, String> valuesMapJson;
 
@@ -45,10 +47,11 @@ public class DeleteEditOpportunity {
         tabBar = mainApp.goToTabBar();
 
         accountsHome = tabBar.clickOnAccountsHome();
-        AccountForm newAccountForm = accountsHome.clickNewButton();
-        accountProfile = newAccountForm
+        AccountForm accountForm = accountsHome.clickNewButton();
+        accountDetail = accountForm
                 .setAccountName(valuesMapJson.get(ACCOUNT_NAME.getValue()))
                 .clickSaveButton();
+
         OpportunityHome opportunityHome = tabBar.clickOnOpportunitiesHome();
         opportunityForm = opportunityHome.clickNewButton();
 
@@ -85,8 +88,9 @@ public class DeleteEditOpportunity {
     public void afterTest() {
         tabBar = mainApp.goToTabBar();
         accountsHome = tabBar.clickOnAccountsHome();
-        accountProfile = accountsHome.clickOnAccount(valuesMapJson.get(ACCOUNT_NAME.getValue()));
-        mainApp = accountProfile.clickDeleteButton();
+        accountDetail = accountsHome.clickOnAccount(valuesMapJson.get(ACCOUNT_NAME.getValue()));
+        mainApp = accountDetail.clickDeleteButton();
+
     }
 
 }

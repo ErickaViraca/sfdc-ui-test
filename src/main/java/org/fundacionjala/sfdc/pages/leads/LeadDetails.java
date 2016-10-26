@@ -13,27 +13,6 @@ import org.fundacionjala.sfdc.framework.utils.CommonActions;
 import org.fundacionjala.sfdc.pages.AssertsDetails;
 import org.fundacionjala.sfdc.pages.base.DetailBase;
 
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.ADDRESS;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.COMPANY;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.CURRENT_GENERATORS;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.DESCRIPTION;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.EMAIL;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.FAX;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.FULL_NAME;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.INDUSTRY;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.LEAD_SOURCE;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.LEAD_STATUS;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.MOBILE;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.NUMBER_LOCATIONS;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.NUM_EMPLOYEES;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.PHONE;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.PRIMARY;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.PRODUCT_INTEREST;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.RATING;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.SICCODE;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.TITLE;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.WEBSITE;
-
 
 /**
  * Class to manage the Detail of the LeadHome Page when it was created.
@@ -378,31 +357,35 @@ public class LeadDetails extends DetailBase {
     public Map<String, AssertsDetails> getStrategyAssertLead(Map<String, String> valuesMapJson) {
         final Map<String, AssertsDetails> strategyMap = new HashMap();
 
-        strategyMap.put(FULL_NAME.toString(), this::getNameLabel);
-        strategyMap.put(COMPANY.toString(), this::getCompanyLabel);
-        strategyMap.put(TITLE.toString(), this::getTitleLabel);
-        strategyMap.put(LEAD_SOURCE.toString(), this::getLeadSourceLabel);
-        // strategyMap.put(CAMPAIGN.toString(), () -> getCampaign(valuesMapJson.get("campaignLookup")));
-        strategyMap.put(INDUSTRY.toString(), this::getIndustryLabel);
-        //strategyMap.put(ANNUAL_REVENUE.toString(), this::getAnnualRevenueLabel);
-        strategyMap.put(PHONE.toString(), this::getPhoneLabel);
-        strategyMap.put(MOBILE.toString(), this::getMobileLabel);
-        strategyMap.put(FAX.toString(), this::getFaxLabel);
+        strategyMap.put("fullName", this::getNameLabel);
+        strategyMap.put("company", this::getCompanyLabel);
+        strategyMap.put("title", this::getTitleLabel);
+        strategyMap.put("leadSource", this::getLeadSourceLabel);
+        // strategyMap.put("campaignLookup", () -> getCampaign(valuesMapJson.get("campaignLookup")));
+        strategyMap.put("industry", this::getIndustryLabel);
+        //strategyMap.put("annualRevenueLabel", this::getAnnualRevenueLabel);
+        strategyMap.put("phone", this::getPhoneLabel);
+        strategyMap.put("mobile", this::getMobileLabel);
+        strategyMap.put("fax", this::getFaxLabel);
 
-        strategyMap.put(EMAIL.toString(), this::getEmailLabel);
-        strategyMap.put(WEBSITE.toString(), this::getWebsiteLabel);
-        strategyMap.put(LEAD_STATUS.toString(), this::getLeadStatusLabel);
-        strategyMap.put(RATING.toString(), this::getRatingLabel);
-        strategyMap.put(NUM_EMPLOYEES.toString(), this::getNumEmployeesLabel);
-        strategyMap.put(ADDRESS.toString(), this::getAddressLabel);
+        strategyMap.put("email", this::getEmailLabel);
+        strategyMap.put("website", this::getWebsiteLabel);
+        strategyMap.put("leadStatus", this::getLeadStatusLabel);
+        strategyMap.put("rating", this::getRatingLabel);
+        strategyMap.put("numEmployees", this::getNumEmployeesLabel);
+        strategyMap.put("address", this::getAddressLabel);
+//        strategyMap.put("city", () -> getAddressLabel());
+//        strategyMap.put("stateProvince", () -> getAddressLabel());
+//        strategyMap.put("zipCode", () -> getAddressLabel() );
+//        strategyMap.put("country", () ->getAddressLabel());
 
-        strategyMap.put(PRODUCT_INTEREST.toString(), this::getProductInterestLabel);
-        strategyMap.put(SICCODE.toString(), this::getSicCodeLabel);
-        strategyMap.put(NUMBER_LOCATIONS.toString(), this::getNumLocationsLabel);
-        strategyMap.put(CURRENT_GENERATORS.toString(), this::getCurrentGeneratorsLabel);
-        strategyMap.put(PRIMARY.toString(), this::getPrimaryLabel);
+        strategyMap.put("productInterest", this::getProductInterestLabel);
+        strategyMap.put("SICCode", this::getSicCodeLabel);
+        strategyMap.put("numberLocations", this::getNumLocationsLabel);
+        strategyMap.put("currentGenerators", this::getCurrentGeneratorsLabel);
+        strategyMap.put("primary", this::getPrimaryLabel);
 
-        strategyMap.put(DESCRIPTION.toString(), this::getDescriptionLabel);
+        strategyMap.put("description", this::getDescriptionLabel);
 
         return strategyMap;
     }

@@ -6,22 +6,8 @@ import org.testng.Assert;
 
 import org.fundacionjala.sfdc.pages.leads.LeadDetails;
 
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.ADDRESS;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.ANNUAL_REVENUE;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.ASSIGN_RULE;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.CAMPAIGN;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.CITY;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.COUNTRY;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.FIRST_NAME;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.FULL_NAME;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.LAST_NAME;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.NAME_SALUTATION;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.STATE_PROVINCE;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.STREET;
-import static org.fundacionjala.sfdc.pages.leads.LeadFields.ZIP_CODE;
-
 /**
- * Class to manage the assertions for LeadFields Page.
+ * Class to manage the assertions for Lead Page.
  */
 public class AssertLead {
 
@@ -46,35 +32,35 @@ public class AssertLead {
      * @return the new Json that was formatted.
      */
     public Map<String, String> formatJson(final Map<String, String> valuesMap) {
-        String fullName = valuesMap.get(NAME_SALUTATION.toString()) + " "
-                + valuesMap.get(FIRST_NAME.toString()) + " "
-                + valuesMap.get(LAST_NAME.toString());
+        String fullName = valuesMap.get("nameSalutation") + " "
+                + valuesMap.get("firstName") + " "
+                + valuesMap.get("lastName");
         fullName = formatString(fullName);
 
         String address =
-                valuesMap.get(STREET.toString()) + "\n"
-                        + valuesMap.get(CITY.toString())
-                        + ", " + valuesMap.get(STATE_PROVINCE.toString())
-                        + " " + valuesMap.get(ZIP_CODE.toString())
-                        + "\n" + valuesMap.get(COUNTRY.toString());
+                valuesMap.get("street") + "\n"
+                        + valuesMap.get("city")
+                        + ", " + valuesMap.get("stateProvince")
+                        + " " + valuesMap.get("zipCode")
+                        + "\n" + valuesMap.get("country");
         address = formatString(address);
 
-        valuesMap.put(FULL_NAME.toString(), fullName);
-        valuesMap.put(ADDRESS.toString(), address);
+        valuesMap.put("fullName", fullName);
+        valuesMap.put("address", address);
 
-        valuesMap.remove(NAME_SALUTATION.toString());
-        valuesMap.remove(FIRST_NAME.toString());
-        valuesMap.remove(LAST_NAME.toString());
-        valuesMap.remove(CAMPAIGN.toString());
+        valuesMap.remove("nameSalutation");
+        valuesMap.remove("firstName");
+        valuesMap.remove("lastName");
+        valuesMap.remove("campaignLookup");
 
-        valuesMap.remove(STREET.toString());
-        valuesMap.remove(CITY.toString());
-        valuesMap.remove(STATE_PROVINCE.toString());
-        valuesMap.remove(ZIP_CODE.toString());
-        valuesMap.remove(COUNTRY.toString());
+        valuesMap.remove("street");
+        valuesMap.remove("city");
+        valuesMap.remove("stateProvince");
+        valuesMap.remove("zipCode");
+        valuesMap.remove("country");
 
-        valuesMap.remove(ANNUAL_REVENUE.toString());
-        valuesMap.remove(ASSIGN_RULE.toString());
+        valuesMap.remove("annualRevenue");
+        valuesMap.remove("assignRule");
 
         return valuesMap;
     }

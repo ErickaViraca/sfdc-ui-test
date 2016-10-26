@@ -32,7 +32,7 @@ public class CreateOpportunity {
     private TabBar tabBar;
     private OpportunityDetail opportunityDetail;
     private AccountHome accountsHome;
-    private AccountDetail accountProfile;
+    private AccountDetail accountDetail;
     private Map<String, String> valuesMapJson;
 
     /**
@@ -44,10 +44,11 @@ public class CreateOpportunity {
         final MainApp mainApp = new MainApp();
         tabBar = mainApp.goToTabBar();
         accountsHome = tabBar.clickOnAccountsHome();
-        AccountForm newAccountForm = accountsHome.clickNewButton();
-        accountProfile = newAccountForm
+        AccountForm accountForm = accountsHome.clickNewButton();
+        accountDetail = accountForm
                 .setAccountName(valuesMapJson.get(ACCOUNT_NAME.getValue()))
                 .clickSaveButton();
+
     }
 
     /**
@@ -77,7 +78,7 @@ public class CreateOpportunity {
         MainApp mainApp = opportunityDetail.clickDeleteButton();
         tabBar = mainApp.goToTabBar();
         accountsHome = tabBar.clickOnAccountsHome();
-        accountProfile = accountsHome.clickOnAccount(valuesMapJson.get(ACCOUNT_NAME.getValue()));
-        accountProfile.clickDeleteButton();
+        accountDetail = accountsHome.clickOnAccount(valuesMapJson.get(ACCOUNT_NAME.getValue()));
+        accountDetail.clickDeleteButton();
     }
 }

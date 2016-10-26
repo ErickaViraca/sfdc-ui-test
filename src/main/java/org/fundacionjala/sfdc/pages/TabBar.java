@@ -1,17 +1,16 @@
 package org.fundacionjala.sfdc.pages;
 
-import org.fundacionjala.sfdc.pages.campaigns.CampaignsHome;
-
-import org.fundacionjala.sfdc.pages.accounts.AccountHome;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.sfdc.framework.utils.CommonActions;
+import org.fundacionjala.sfdc.pages.accounts.AccountHome;
 import org.fundacionjala.sfdc.pages.base.AbstractBasePage;
+import org.fundacionjala.sfdc.pages.campaigns.CampaignsHome;
 import org.fundacionjala.sfdc.pages.chatter.ChatterAbstractPage;
 import org.fundacionjala.sfdc.pages.contacts.ContactHome;
+import org.fundacionjala.sfdc.pages.contracts.ContractHome;
 import org.fundacionjala.sfdc.pages.leads.LeadHome;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
@@ -51,9 +50,15 @@ public class TabBar extends AbstractBasePage {
     private WebElement opportunitiesTab;
 
 
+    @FindBy(id = "Contract_Tab")
+    @CacheLookup
+    private WebElement contractsTab;
+
+
     @FindBy(id = "Case_Tab")
     @CacheLookup
     private WebElement casesTab;
+
 
 
     /**
@@ -115,6 +120,16 @@ public class TabBar extends AbstractBasePage {
     public LeadHome clickLead() {
         CommonActions.clickElement(leadTab);
         return new LeadHome();
+    }
+
+    /**
+     * This method makes click on Contracts tab.
+     *
+     * @return {@link ContractHome}
+     */
+    public ContractHome clickOnContractHome() {
+        CommonActions.clickElement(contractsTab);
+        return new ContractHome();
     }
 
     /**
