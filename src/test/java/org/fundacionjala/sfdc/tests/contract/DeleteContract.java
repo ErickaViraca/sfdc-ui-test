@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.util.Map;
 
-import static org.fundacionjala.sfdc.pages.products.Product.NAME;
+import static org.fundacionjala.sfdc.pages.products.ProductFields.NAME;
 import static org.testng.Assert.assertFalse;
 
 /**

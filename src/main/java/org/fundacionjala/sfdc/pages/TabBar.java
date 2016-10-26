@@ -3,11 +3,9 @@ package org.fundacionjala.sfdc.pages;
 import org.fundacionjala.sfdc.pages.campaigns.CampaignsHome;
 
 import org.fundacionjala.sfdc.pages.accounts.AccountHome;
-<<<<<<< HEAD
-import org.fundacionjala.sfdc.pages.contracts.ContractHome;
-=======
 
->>>>>>> upstream/develop
+import org.fundacionjala.sfdc.pages.contracts.ContractHome;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
